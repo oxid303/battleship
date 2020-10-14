@@ -111,8 +111,8 @@ const addSquare = params => {
 
 const addFirstSquare = () => {
   const square = {
-    x: Math.floor(Math.random() * X),
-    y: Math.floor(Math.random() * Y),
+    x: Math.floor(Math.random() * (X + 1)),
+    y: Math.floor(Math.random() * (Y + 1)),
     isHit: false,
   };
   return checkSquare(square) ? square : addFirstSquare();
@@ -152,30 +152,39 @@ const setShip = (ships, length, id) => {
   });
 };
 
-export default (squares, maxShip = 4, customShips = false) => {
-  const ships = [];
+const tryGetShips = (squares, maxShip = 4, customShips = false) => {
+  FILL = [];
+  X = 0;
+  Y = 0;
 
   squares.forEach(item => {
     X = Math.max(item.x, X);
     Y = Math.max(item.y, Y);
   });
 
-  if (customShips) {
-    customShips.sort((a, b) => a > b);
+  try {
+    const ships = [];
 
-    for (let i = 0; i < customShips.length; i++) {
-      setShip(ships, customShips[i], i);
-    }
+    if (customShips) {
+      customShips.sort((a, b) => a > b);
 
-  } else {
-    for (let length = maxShip, num = 1, id = 0; length > 0; length--, num++) {
-      for (let i = 0; i < num; i++) {
-        setShip(ships, length, id++);
+      for (let i = 0; i < customShips.length; i++) {
+        setShip(ships, customShips[i], i);
+      }
+
+    } else {
+      for (let length = maxShip, num = 1, id = 0; length > 0; length--, num++) {
+        for (let i = 0; i < num; i++) {
+          setShip(ships, length, id++);
+        }
       }
     }
+    return ships;
+
+  } catch (e) {
+    console.warn('maximum trying to get random');
+    return tryGetShips(squares, --maxShip, customShips && customShips.pop());
   }
-  FILL = [];
-  X = 0;
-  Y = 0;
-  return ships;
 };
+
+export default tryGetShips;
