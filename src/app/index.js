@@ -1,25 +1,39 @@
 import React from 'react';
-import UI from './ui';
+import Board from './board';
+import getShips from '../ships-generator';
+import { getXNames, getYNames } from '../ships-generator/utils';
+import styles from '../styles';
 
-import getNames from '../utils/getNames';
-import getSquares from '../utils/getSquares';
+const x = 10;
+const y = 10;
+const xNames = getXNames(x);
+const yNames = getYNames(y);
 
-export default () => {
-  const hNum = 10;
-  const vNum = 10;
-  const maxShip = 4;
-  const horizontals = getNames(hNum, true);
-  const verticals = getNames(vNum);
-  const squares = getSquares(hNum, vNum);
+const App = () => {
+
+  let [ships, setShips] = React.useState(null);
+
+  const handleUpdate = () => {
+    setShips(getShips({ x, y }));
+  };
+
+  React.useEffect(() => {
+    handleUpdate();
+  }, []);
 
   return (
     <>
-      <UI
-        squares={squares}
-        maxShip={maxShip}
-        horizontals={horizontals}
-        verticals={verticals}
-      />
+      {ships && <div>
+        <Board x={x} y={y} ships={ships} xNames={xNames} yNames={yNames} />
+
+        <div style={styles.buttonWrapper}>
+          <button style={styles.button} onClick={handleUpdate}>
+            generate battleships
+          </button>
+        </div>
+      </div>}
     </>
   );
 };
+
+export default App;
