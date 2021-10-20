@@ -1,19 +1,5 @@
 import { X_NUM, Y_NUM } from '../constants';
 
-export const getXNames = num => {
-  let str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  return Array.from(str.substr(0, num));
-};
-
-export const getYNames = num => {
-  const arr = [];
-
-  for (let i = 1; i <= num; ++i) {
-    arr.push(String(i));
-  }
-  return arr;
-};
-
 export const getVectors = () => {
 
   let vectors = [-X_NUM, Y_NUM, X_NUM, -Y_NUM];

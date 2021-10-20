@@ -12,12 +12,12 @@ const checkIsShipsFit = (x, y, shipsSizes) => {
   for (const shipSize of shipsSizes) {
     let isWrong = true;
 
-    for (let l = 0; l < linesNum; ++l) {
-      const { line, shipsOnLine } = lines[l];
+    for (let i = 0; i < linesNum; ++i) {
+      const { line, shipsOnLine } = lines[i];
 
       if (shipsOnLine * (shipSize - 1) + shipSize <= line) {
 
-        lines[l] = {
+        lines[i] = {
           line: line - shipSize - 2,
           shipsOnLine: shipsOnLine + 1,
         };

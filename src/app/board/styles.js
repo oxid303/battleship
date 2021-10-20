@@ -1,5 +1,5 @@
 const styles = {
-  getBoard: (x, point) => ({
+  getBoardWrapper: (x, point) => ({
     margin: 'auto',
     width: (x + 2) * point,
   }),
@@ -7,7 +7,7 @@ const styles = {
     display: 'grid',
     gridTemplateColumns: `repeat(${x + 1}, ${point}px)`,
   }),
-  getVerticalGrid: point => ({
+  getYNamesAndBoard: point => ({
     display: 'grid',
     gridTemplateColumns: `${point}px auto`,
   }),
@@ -20,20 +20,6 @@ const styles = {
   canvas: {
     display: 'block',
     outline: 0,
-  },
-  buttonWrapper: {
-    margin: 'auto',
-    paddingTop: 28,
-    width: 258,
-  },
-  button: {
-    cursor: 'pointer',
-    fontSize: 18,
-    backgroundColor: '#fff',
-    outline: 0,
-    border: '1px solid #263238',
-    width: 258,
-    height: 50,
   },
 };
 

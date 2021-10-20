@@ -1,8 +1,8 @@
 import React from 'react';
 import Board from './board';
+import Button from './button';
 import getShips from '../ships-generator';
-import { getXNames, getYNames } from '../ships-generator/utils';
-import styles from '../styles';
+import { getXNames, getYNames } from './utils';
 
 const x = 10;
 const y = 10;
@@ -25,12 +25,7 @@ const App = () => {
     <>
       {ships && <div>
         <Board x={x} y={y} ships={ships} xNames={xNames} yNames={yNames} />
-
-        <div style={styles.buttonWrapper}>
-          <button style={styles.button} onClick={handleUpdate}>
-            generate battleships
-          </button>
-        </div>
+        <Button handleUpdate={handleUpdate} />
       </div>}
     </>
   );
