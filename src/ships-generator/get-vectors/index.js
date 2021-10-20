@@ -1,6 +1,6 @@
 import { X_NUM, Y_NUM } from '../constants';
 
-export const getVectors = () => {
+const getVectors = () => {
 
   let vectors = [-X_NUM, Y_NUM, X_NUM, -Y_NUM];
   const v1 = vectors[Math.floor(Math.random() * 4)];
@@ -13,15 +13,4 @@ export const getVectors = () => {
   return [v4, v3, v2, v1];
 };
 
-export const transformNumToPos = arr => {
-  const result = [];
-
-  for (const point of arr) {
-    result.push({
-      x: ~~(point / X_NUM),
-      y: point % X_NUM,
-    });
-  }
-
-  return result;
-};
+export default getVectors;

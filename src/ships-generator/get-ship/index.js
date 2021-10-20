@@ -1,4 +1,4 @@
-import { getVectors } from '../utils';
+import getVectors from '../get-vectors';
 
 const getShip = (shipSize, grid, restGrid) => {
 

@@ -1,8 +1,7 @@
 import fixParams from './fix-params';
 import createGrid from './create-grid';
 import getShip from './get-ship';
-import { SHIFTS } from './constants';
-import { transformNumToPos } from './utils';
+import { X_NUM, SHIFTS } from './constants';
 
 const getShips = params => {
 
@@ -12,16 +11,15 @@ const getShips = params => {
   const ships = [];
 
   for (const shipSize of shipsSizes) {
-
     const ship = getShip(shipSize, grid, [...grid]);
 
     ship.forEach(point => {
-      ships.push(point);
+      ships.push({ x: ~~(point / X_NUM), y: point % X_NUM });
       SHIFTS.forEach(shift => grid.delete(point + shift));
     });
   }
 
-  return transformNumToPos(ships);
+  return ships;
 };
 
 export default getShips;
