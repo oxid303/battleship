@@ -2,12 +2,11 @@ import React from 'react';
 import Board from './board';
 import Button from './button';
 import getShips from '../ships-generator';
-import { getXNames, getYNames } from './utils';
 
 const x = 10;
 const y = 10;
-const xNames = getXNames(x);
-const yNames = getYNames(y);
+const xNames = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.substr(0, x)];
+const yNames = Array(y).fill().map((_, i) => String(i + 1));
 
 const App = () => {
 

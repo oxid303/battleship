@@ -1,10 +1,10 @@
 import getVectors from '../get-vectors';
 
-const getShip = (shipSize, grid, restGrid) => {
+const getShip = (shipSize, grid) => {
 
-  if (!restGrid.length) return [];
+  if (!grid.size) return [];
 
-  const first = restGrid[Math.floor(Math.random() * restGrid.length)];
+  const first = [...grid][Math.floor(Math.random() * grid.size)];
   const vectors = getVectors();
   let ship = [first];
 
@@ -18,14 +18,13 @@ const getShip = (shipSize, grid, restGrid) => {
       vectors.pop();
 
       if (!vectors.length) {
-        return getShip(shipSize, grid, restGrid.filter(p => p !== first));
+        const restGrid = new Set(grid);
+        restGrid.delete(first);
+        return getShip(shipSize, restGrid);
       }
 
-      if (vectors.length === 2) {
-        ship = [first];
-      } else {
-        ship.reverse();
-      }
+      if (vectors.length === 2) ship = [first];
+      else ship.reverse();
     }
   }
   return ship;
