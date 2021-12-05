@@ -18,9 +18,8 @@ const getShip = (shipSize, grid) => {
       vectors.pop();
 
       if (!vectors.length) {
-        const restGrid = new Set(grid);
-        restGrid.delete(first);
-        return getShip(shipSize, restGrid);
+        grid.delete(first);
+        return getShip(shipSize, grid);
       }
 
       if (vectors.length === 2) ship = [first];

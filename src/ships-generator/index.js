@@ -11,7 +11,7 @@ const getShips = params => {
   const ships = [];
 
   for (const shipSize of shipsSizes) {
-    const ship = getShip(shipSize, grid);
+    const ship = getShip(shipSize, new Set(grid));
 
     ship.forEach(point => {
       ships.push({ x: ~~(point / X_NUM), y: point % X_NUM });
