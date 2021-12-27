@@ -3,7 +3,7 @@ import checkIsShipsFit from './check-is-ships-fit';
 const getShipsSizes = (x, y) => {
 
   let maxShip = 1;
-  let shipsSizes = [1];
+  let shipsSizes = [maxShip];
   let result = shipsSizes;
 
   while (checkIsShipsFit(x, y, shipsSizes)) {

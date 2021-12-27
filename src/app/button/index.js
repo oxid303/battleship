@@ -1,26 +1,26 @@
 import React from "react";
 import styles from './styles';
 
-const Button = ({ handleUpdate }) => {
+const Button = ({ x, size, handleUpdate }) => {
 
   let [hover, setHover] = React.useState(false);
-  let [keyboard, setKeyboard] = React.useState(false);
+  let [focus, setFocus] = React.useState(false);
+
+  const width = x * size + 1;
 
   return (
-    <div>
-      <div style={styles.buttonWrapper}>
+    <div style={styles.getWrapper(size, width)}>
 
-        <button
-          onClick={() => handleUpdate()}
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          onFocus={() => setKeyboard(true)}
-          onBlur={() => setKeyboard(false)}
-          style={styles.getButton(hover, keyboard)}
-        >
-          generate battleships
-        </button>
-      </div>
+      <button
+        onClick={() => handleUpdate()}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        onFocus={() => setFocus(true)}
+        onBlur={() => setFocus(false)}
+        style={styles.getButton(size, width, hover, focus)}
+      >
+        GENERATE
+      </button>
     </div>
   )
 };

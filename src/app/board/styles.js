@@ -1,26 +1,23 @@
 const styles = {
-  getBoardWrapper: (x, point) => ({
+  getWrapper: (x, size) => ({
     margin: 'auto',
-    width: (x + 2) * point,
+    width: (x + 2) * size,
   }),
-  getXNames: (x, point) => ({
+  getXNames: (x, size) => ({
     display: 'grid',
-    gridTemplateColumns: `repeat(${x + 1}, ${point}px)`,
+    gridTemplateColumns: `repeat(${x + 1}, ${size}px)`,
   }),
-  getYNamesAndBoard: point => ({
+  getYNamesAndField: size => ({
     display: 'grid',
-    gridTemplateColumns: `${point}px auto`,
+    gridTemplateColumns: `${size}px auto`,
   }),
-  getName: point => ({
-    width: point,
-    height: point,
+  getName: size => ({
+    width: size,
+    height: size,
     textAlign: 'center',
+    fontSize: size / 2,
     lineHeight: 2,
   }),
-  canvas: {
-    display: 'block',
-    outline: 0,
-  },
 };
 
 export default styles;

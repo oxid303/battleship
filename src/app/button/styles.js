@@ -1,17 +1,17 @@
 const styles = {
-  buttonWrapper: {
+  getWrapper: (size, width) => ({
     margin: 'auto',
-    paddingTop: 28,
-    width: 258,
-  },
-  getButton: (hover, keyboard) => ({
+    paddingTop: size,
+    width,
+  }),
+  getButton: (size, width, hover, focus) => ({
+    width,
+    height: size * 1.5,
     cursor: 'pointer',
-    fontSize: 18,
-    backgroundColor: hover ? '#b0bec5' : keyboard ? '#cfd8dc' : '#fff',
+    fontSize: size / 2,
+    backgroundColor: hover ? '#b0bec5' : focus ? '#cfd8dc' : '#fff',
     outline: 0,
     border: '1px solid #263238',
-    width: 258,
-    height: 50,
     transition: '0.1s',
   }),
 };

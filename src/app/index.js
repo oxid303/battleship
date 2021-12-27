@@ -5,7 +5,8 @@ import getShips from '../ships-generator';
 
 const x = 10;
 const y = 10;
-const xNames = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.substr(0, x)];
+const size = 32;
+const xNames = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.substring(0, x)];
 const yNames = Array(y).fill().map((_, i) => String(i + 1));
 
 const App = () => {
@@ -21,11 +22,9 @@ const App = () => {
   }, []);
 
   return (
-    <>
-      {ships && <div>
-        <Board x={x} y={y} ships={ships} xNames={xNames} yNames={yNames} />
-        <Button handleUpdate={handleUpdate} />
-      </div>}
+    ships && <>
+      <Board x={x} y={y} size={size} ships={ships} xNames={xNames} yNames={yNames} />
+      <Button x={x} size={size} handleUpdate={handleUpdate} />
     </>
   );
 };

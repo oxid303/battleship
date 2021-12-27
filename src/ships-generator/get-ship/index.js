@@ -4,9 +4,10 @@ const getShip = (shipSize, grid) => {
 
   if (!grid.size) return [];
 
-  const first = [...grid][Math.floor(Math.random() * grid.size)];
   const vectors = getVectors();
+  const first = [...grid][~~(Math.random() * grid.size)];
   let ship = [first];
+  grid.delete(first);
 
   while (ship.length < shipSize) {
     const next = ship[ship.length - 1] + vectors[vectors.length - 1];
@@ -16,11 +17,7 @@ const getShip = (shipSize, grid) => {
 
     } else {
       vectors.pop();
-
-      if (!vectors.length) {
-        grid.delete(first);
-        return getShip(shipSize, grid);
-      }
+      if (!vectors.length) return getShip(shipSize, grid);
 
       if (vectors.length === 2) ship = [first];
       else ship.reverse();

@@ -14,7 +14,7 @@ const fixParams = params => {
     return { x, y, shipsSizes: getShipsSizes(x, y) };
   }
 
-  shipsSizes = [...shipsSizes].sort((a, b) => b - a);
+  shipsSizes = [...shipsSizes].sort((a, b) => b > a);
 
   if (!checkIsShipsFit(x, y, shipsSizes)) {
     return { x, y, shipsSizes: getShipsSizes(x, y) };
